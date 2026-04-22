@@ -39,3 +39,44 @@ Se abre con cualquier repo, usas Markdown para los .md.
 * Git add para añadir tus archivos.
 * Git commit -m "mensaje" para crear un commit. Al hacer git status, confirmas que los cambios han sido guardados.
 * Git logs para ver los logs del repo, como un historial.
+
+## Clase 2
+
+### States
+
+Git ve los estados, son los siguiente.
+
+#### Directorio de trabajo
+
+Git aún no guarda, lo tiene detectado. Revisa tu directorio.
+
+Los archivos los cataloga en untracked (sin seguimiento, no tiene versión previa, nuevo) y modified (archivo modificado, eliminado o con un nombre nuevo).
+
+Aquí, el archivo gitignore es importante porque indica qué archivos no pasan al repo, los que no quieres subir. Solo añades los archivos y directorios.
+
+Para descartar el cambio, usas git restore, pero cuidado, borras todo el cambio. Puedes recuperar un archivo borrado con git restore.
+
+#### Stage Area
+
+Preparado, le dices a Git qué guardar. Antes, los preparas. Usas git add [file] para guardar un archivo, git add . para guardar todos. Para sacar el archivo del stage area, usas git restore --staged [file]. De untracked a guardado. De guardado a modified.
+
+#### Local Repo
+
+Con los cambios confirmados, se gfuardan en el repo. El historial ya tiene cambios. Para hacerlo, usas git commit -m "mensaje", el cual crea un punto de guardado de todos los archivos en staged.
+
+Para ver todos los commits, usas git log. Para ver más simple, git log --oneline, resume el ID.
+
+Para deshacer el último commit, usa git reset --soft HEAD~1, dice vuelve al último punto de guardado. Se borra el commit, y vuelven los archivos al stage area.
+
+Para cambiar el nombre del commit, git commit --amend -m "nuevo mensaje". Cambia el ID.
+
+#### Repo Remoto
+
+Se suben los cambios.
+
+### Buenas Prácticas
+
+El mensaje del commit debe ser descriptivo.
+
+1. Que los commits sean atómicos, no por cada pequeño cambio ni tampoco por cada gran volumen. Deben ser cambios pequeños pero que tengan una relación. Solo con incluir una coma o "y" ya describes dos acciones diferentes. Commit por cada cambio mínimo, iteraciones pequeñas.
+2. Los commits deben ser descriptivos, con verbos imperativos (acciones, add, change, fix, remove). Nunca usar puntos, comas tal vez, pero puntos no. Son innecesarios. Usa como máximo 50 caracteres en los mensajes de commit, simple y directo. Y usa un prefijo para hacerlos más semánticos, "tipo": "descripción". Ahora, los más comunes son feat (nueva feature), fix (bugs), perf (mejorar performance), build (para el sistema de build), ci (pipeline), docs (documentación), refactor (refactorizas el código), style (cambios UI) y test. Si el commit es más complicado, añade un contexto, no hay nombre del commit. Para eso, ejecutas git commit, así sin nada, abre su editor, en la primera línea añades el commit normal, y de bajo, el cuerpo con la descripción.
