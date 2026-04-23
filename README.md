@@ -80,3 +80,34 @@ El mensaje del commit debe ser descriptivo.
 
 1. Que los commits sean atómicos, no por cada pequeño cambio ni tampoco por cada gran volumen. Deben ser cambios pequeños pero que tengan una relación. Solo con incluir una coma o "y" ya describes dos acciones diferentes. Commit por cada cambio mínimo, iteraciones pequeñas.
 2. Los commits deben ser descriptivos, con verbos imperativos (acciones, add, change, fix, remove). Nunca usar puntos, comas tal vez, pero puntos no. Son innecesarios. Usa como máximo 50 caracteres en los mensajes de commit, simple y directo. Y usa un prefijo para hacerlos más semánticos, "tipo": "descripción". Ahora, los más comunes son feat (nueva feature), fix (bugs), perf (mejorar performance), build (para el sistema de build), ci (pipeline), docs (documentación), refactor (refactorizas el código), style (cambios UI) y test. Si el commit es más complicado, añade un contexto, no hay nombre del commit. Para eso, ejecutas git commit, así sin nada, abre su editor, en la primera línea añades el commit normal, y de bajo, el cuerpo con la descripción.
+
+## Clase 3
+
+### Github
+
+Es una plataforma en la nube para alojar y gestionar proyectos. Git es el control de versiones, Github es el servidor.
+
+#### Crear cuenta
+
+Ve a github.com, seleccionas sign up para registrarte. Dentro, rellenas tus datos o inicias con cuenta de Google o Apple. El username es importante, no se puede cambiar. No lo hagas con la cuenta institucional porque les quitan cuando terminen la carrera, lo debes vincular a otras cuentas. Para verificar la cuenta, se hace un puzzle/captcha.
+
+#### Crear repo
+
+Luego, se crea un repositorio, dando el nombre, una descripción, la visibilidad (público, privado), add README, add .gitignore y add license (licencias del código).
+
+Si creas un repo con tu nombre de usuario, se lo puede usar como portafolio.
+
+#### Configurar SSH
+
+HTTPS para clonar no hay problemas, pero para el trabajo en equipo es molesto porque siempre pide credenciales. Lo mejor es SSH.
+
+En windows, abres Git bash. Ejecutas ssh-keygen -t ed25519 -C "Email" para generar una llave.
+Git es el que gestiona commits y repos, Github es el servicio para trabajar en equipo. Copias el contenido y luego, vas a settings, SSH keys, le ponen título y pegas la llave. Para comprobar que funciona, ssh -T <git@github.com>, debe responder con un Hi para comprobar que está autenticado.
+
+Si clonaste con HTTPS, se puede usar este comando para cambiar el puntero de github y que ya no pida autenticación: git remote set-url origin "<git@github.com>:User/Repo.git"
+
+#### Configurar repo
+
+Si tienes un repo existente, git remode add origin repo, para que el local se conecte con el remoto. Para renombrar ramas, git branch -M nuevo_nombre. Para subir cambios, git push -u origin main (u por ser la 1ra vez).
+
+Un commit puede ser de máximo 100MB. El repo tiene un límite de hasta 10GB. Para subir cambios, git push. No soporta validación de password, por eso es mejor SSH. Git push origin rama, para indicar al servidor y rama. Para bajar cambios, git pull origin rama. O git pull.
