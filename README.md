@@ -111,3 +111,46 @@ Si clonaste con HTTPS, se puede usar este comando para cambiar el puntero de git
 Si tienes un repo existente, git remode add origin repo, para que el local se conecte con el remoto. Para renombrar ramas, git branch -M nuevo_nombre. Para subir cambios, git push -u origin main (u por ser la 1ra vez).
 
 Un commit puede ser de máximo 100MB. El repo tiene un límite de hasta 10GB. Para subir cambios, git push. No soporta validación de password, por eso es mejor SSH. Git push origin rama, para indicar al servidor y rama. Para bajar cambios, git pull origin rama. O git pull.
+
+## Clase 4
+
+### Git remote
+
+Permite gestionar conexiones con los repositorios remotos. git remote -v para ver las URLs donde apunta el repo, git remote add apodo "URL" para vincular con uno nuevo, git remote set-url apodo "URL" para cambiar hacia dónde apunta.
+
+### Configurar múltiple SSH
+
+Entras a la carpeta .ssh para ver las llaves que generas. Creas un archivo config; dentro, se puede definir host de la siguiente forma:
+
+```bash
+Host github.com
+  HostName github.com
+  User git
+  IdentityFile ~/.ssh/id_ed25519
+```
+
+El archivo se lee de arriba hacia abajo, los Host deben ser de nombres distintos. Para varios SSH, cambias el identity file. El host es el alias de la conexión.
+
+Para comprobar conexión, ssh -T git@host
+
+### Configuraciones locales
+
+Puedes ver configuraciones en git config list. Lo anterior no va a usar otro user de git porque usamos global. Para usar otro usuario, usamos configuraciones locales.
+
+Hay una jerarquía:
+
+1. Sistema
+2. Global: Lo que haces con git config --global. En la config list, aparecen arriba.
+3. Local: Se imponen a todo, ejecutando git config y ya. En la config list, aparecen abajo.
+
+### Git checkout
+
+Permite movernos entre ramas, pero también puedes apuntar a otro commit. Para eso, git checkout con el Hash. Para volver al commit actual, git checkout main. Pero si vuelves a main, alerta que el HEAD está desacoplado, que para guardar el cambio, se debe crear una nueva rama.
+
+Para recuperarlo, git checkout con el hash. Y para guardarlo, git checkout -b "branch". Creas una nueva rama.
+
+### Recomendaciones
+
+1. No trabajes mucho en Detached HEAD.
+2. Limpiar el directorio de trabajo.
+3. Aprende, es bueno.
