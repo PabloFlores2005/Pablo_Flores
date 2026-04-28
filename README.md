@@ -154,3 +154,53 @@ Para recuperarlo, git checkout con el hash. Y para guardarlo, git checkout -b "b
 1. No trabajes mucho en Detached HEAD.
 2. Limpiar el directorio de trabajo.
 3. Aprende, es bueno.
+
+## Clase 5
+
+### Ramas
+
+Bifurcación del código, se crea a partir del último commit, teniendo hasta esa sección de ese código.
+
+Puedes ver tu estadi usando git log --graph --online --all.
+
+### Git branch
+
+Con git branch, ves las ramas que tienes en el local y en la que te ubicas.
+
+Para crear una nueva rama, git branch type/name. Para eliminar, git branch -D rama.
+
+El HEAD es en donde estás y main tu rama principal o hasta donde subiste en el remoto.
+
+### Git checkout en ramas
+
+Permite cambiar de rama. Solo ejecutas git checkout rama.
+
+También permite crear ramas con git checkout -b rama, con la diferencia de que también te mueve a esa rama.
+
+### Git switch
+
+Lo que hacía el git checkout, cambio de ramas, pero sin poder ir al pasado en commits.
+
+También se pueden crear ramas usando git switch -c "nombre".
+
+### Gitflow
+
+Puedes hacer lo que quieras, pero provoca un desorden. Ahí aparecen los frameworks, marcos de trabajo para saber cómo trabajar.
+
+En git, usamos flujos de trabajo para manejar y trabajar de forma ordenada las ramas. No solo permite un código limpio, también logs y entender el proceso de trabajo.
+
+Para ramas de cambios, [tipo]/[descripción]
+
+* main: se crea por defecto, el código que funciona y se dará en producción. Solo tiene el commit inicial y de las versiones.
+* develop: Tiene todos los cambios nuevos, aún no probados y en revisión. Todo se mergea a develop.
+* feature: Para nuevas funcionalidades.
+* release: Para probar y ajustar para producción.
+* hotfix: Para corregir errores en main.
+
+### Git merge
+
+Para fusionar ramas, vas a la rama objetivo y ejecutas git merge rama de la rama que quiere mergear. Mergear, luego eliminar rama.
+
+## Add contributors
+
+Vas a tu repositorio, seleccionas settings y collaborators. Dentro, add people y mediante username, nombre completo o email, añaden. Envía la petición y espera hasta confirmar.
