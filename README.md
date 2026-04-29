@@ -204,3 +204,46 @@ Para fusionar ramas, vas a la rama objetivo y ejecutas git merge rama de la rama
 ## Add contributors
 
 Vas a tu repositorio, seleccionas settings y collaborators. Dentro, add people y mediante username, nombre completo o email, añaden. Envía la petición y espera hasta confirmar.
+
+## Clase 6
+
+### Git push
+
+Cuando creas una nueva rama y no eres dueño del repo, debes poner git push -u por priemra vez.
+
+### Git merge en acción
+
+Comando que permite fusionar las ramas. Unes lo que ya está porque funciona. Para realizarlo:
+
+1. Ejecutas git fetch para detectar cambios en ramas. La base de todo.
+2. Ve a tu rama objetivo (git checkout rama).
+3. Ejecutas git pull origin rama, para traer todos los cambios del origen a tu rama local. Sirve ejecutando git pull.
+4. Ejecutas git merge rama_que_se_eliminara. Se hace la fusión y el puntero se va al último commit de la rama que se eliminará.
+
+Fast-forward une la rama directamente, pero no hay registro en los logs de que hubo una rama, hace merge sin commit. Not fast-forward crea el commit y deja evidencia en el log.
+
+### Caso 1: Merge sin conflictos
+
+Git merge hace fast forward por defecto, eso ocasiona lo del puntero. Para evitarlo, git merge --no-ff rama, esto permite que se mantengan los logs. Se crea un commit de referencia.
+
+Ahora se elimina la rama usando git branch -D rama.
+
+### Caso 2: Merge con conflictos
+
+Un conflicto es cuando ha habido un cambio anterior sobre el nuevo cambio, y git no sabe cómo reaccionar. Aquí, el dev debe decidir. En tu editor de código, debes tener un plug in para poder ver eso.
+
+Manualmente, al revisar los archivos, abre etiquetas indicando HEAD (donde te encuentras, lo que tenía el develop, el código original) lo otro es el cambio nuevo.
+
+```js
+<<<HEAD
+  Original code
+=====
+  New code
+>>>branch
+```
+
+Borras las etiquetas, y decides con qué quedarte y qué eliminar.
+
+### Caso 3: Merge hacia tu rama
+
+Si no hace fetch ni pull, se puede crear un conflicto grande. Nunca hagas el git merge al develop, sino a tu propia rama. No sacrifiques develop, haces git merge rama. El conflicto es en tu rama local, borras los cambios que el develop tenía y dejas tus cambios. No es para mergear después, sino para actualizar el tuyo. Reducimos la cantidad de problemas dentro del develop.
