@@ -247,3 +247,21 @@ Borras las etiquetas, y decides con qué quedarte y qué eliminar.
 ### Caso 3: Merge hacia tu rama
 
 Si no hace fetch ni pull, se puede crear un conflicto grande. Nunca hagas el git merge al develop, sino a tu propia rama. No sacrifiques develop, haces git merge rama. El conflicto es en tu rama local, borras los cambios que el develop tenía y dejas tus cambios. No es para mergear después, sino para actualizar el tuyo. Reducimos la cantidad de problemas dentro del develop.
+
+## Clase 7
+
+### Pull Requests
+
+Los PRs son Merge Requests (GitLab), es la solicitud para mergear una rama al develop o main en Github. Permite ver qué se quiere mergear.
+
+Para crearlo, haces git push de la rama, luego vas al repositorio. Arriba, te aparece la opción de crear un PR. Dentro, elijes la rama a la que hacer merge, le agregas un título, descripción, asignas reviewers y quienes hicieron el merge, y defines reglas.
+
+### Por qué usarlos
+
+Son medidas de seguridad, así evitamos que cualquier cambio se suba a la rama principal y detectar riesgos antes de que pasen a producción. Verificamos el usuario, contenido del código, calidad y que sea seguro.
+
+Obliga a debatir y decidir conjuntamente, es una forma de incentivar el trabajo grupal. Puedes opinar sin restricciones (obviamente hacia la calidad del código). Los PRs se realizan si todas las observaciones/reviews fueron solucionadas y si se cumple el mínimo de approves requeridos. Si hay los suficientes, pero una review abierta, no se mergea (poca democracia, como le gusta al auxi).
+
+### Configurar repositorio
+
+Para evitar accesos nada seguros, en la configuración puedes poner el repo en público o privado. En branches, puedes añadir branch rules, definiendo targets de rama, y reglas como restringir updates y requerir PRs antes de hacer merge.
