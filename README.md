@@ -265,3 +265,37 @@ Obliga a debatir y decidir conjuntamente, es una forma de incentivar el trabajo 
 ### Configurar repositorio
 
 Para evitar accesos nada seguros, en la configuración puedes poner el repo en público o privado. En branches, puedes añadir branch rules, definiendo targets de rama, y reglas como restringir updates y requerir PRs antes de hacer merge.
+
+## Clase 8
+
+### Seguridad del repo
+
+Cuando se añade una rama, que sea con el nombre, no entre comillas o paréntesis.
+
+### Múltiples PRs
+
+Cuando hay muchos, las ramas a pesar de que se borran de forma local, no se hacen de forma remota. Para hacer eso, se cambia a develop y se ejecuta git push origin --delete rama.
+
+Git fetch --prune borra las ramas que fueron eliminadas en el repo.
+
+Si dos PRs modifican el mismo archivo, Github lo detecta. Sale arriba "unable to merge". Lo debes resolver, puede ser en remoto o en local.
+
+SIEMPRE ESTAR ATENTOS A LOS PRs DE LXS DEMÁS
+
+### Git stash
+
+Guarda de forma temporal los cambios, puedes ejecutar git stash directo, o con -m "descripción". Para recuperar los cambios, ejecutas git stash pop.
+
+Para ver todos los stash, git stash list.
+
+### Git diff
+
+Muestra qué hay de diferente entre el código actual y lo que hay en otra rama, commit o stash. git diff rama_actual rama_comparar. Si solo de un archivo, git diff file_name.
+
+Ejecutas git diff . para tener todos los cambios. Otro es git diff --staged . para comparar con los cambios en staged, o --staged file_name para un archivo específico.
+
+### Resolver conflictos
+
+Usa un editor de código. En VS Code, lo hace por defecto. El código que viene es el de la izquierda, el que tienes el de la derecha. Puedes aceptar current, incoming o combination.
+
+Cuando se sube el cambio o corrección, se resetean los approves.
